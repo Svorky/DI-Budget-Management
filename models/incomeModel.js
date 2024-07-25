@@ -9,7 +9,7 @@ db.schema.hasTable( TABLENAME ).then( function ( exists ) {
             t.increments( 'id' ).primary();
             t.integer( 'amount' );
             t.text( 'comment' );
-            t.datetime( 'date' );
+            t.datetime( 'date' ).defaultTo(knex.fn.now(6));;
         } );
     }
 } );

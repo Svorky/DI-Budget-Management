@@ -18,8 +18,7 @@ app.listen(5000, () => {
 })
 
 app.use('/api/expenses', expensesRouter)
+// app.use('/api/incomes', incomesRouter)
 app.use('/api/categories', categoriesRouter)
 
-app.get('/', (req,res) => {
-    res.sendFile(__dirname + "/public/index.html");
-})
+app.use(express.static(__dirname + "/public"))
