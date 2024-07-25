@@ -13,6 +13,18 @@ fetch('/api/categories')
             }
         }
     );
+let category = document.querySelector('#category');
+
+let exradiobtn = document.querySelector("#action-ex");
+exradiobtn.addEventListener('change', (event) => {
+    category.style.display = 'inline-block';
+});
+
+let inradiobtn = document.querySelector("#action-in");
+inradiobtn.addEventListener('change', (event) => {
+    category.style.display = 'none';
+});
+
 let datetime = document.querySelector('#date');
 datetime.value = new Date().toISOString().slice(0, -8);
 
@@ -29,8 +41,8 @@ form.addEventListener('submit', (event) => {
         url = '/api/incomes';
     }
     console.log(data);
-    let { action, ...creates} = data
-    console.log(creates)
+    let { action, ...creates } = data;
+    console.log(creates);
     fetch(url, {
         method: "post",
         headers: {
@@ -38,10 +50,10 @@ form.addEventListener('submit', (event) => {
         },
         body: JSON.stringify(creates)
     })
-    .then(
-        result => result.json()
-    )
-    .then(
-        json => console.log(json)
-    )
+        .then(
+            result => result.json()
+        )
+        .then(
+            json => console.log(json)
+        );
 });
