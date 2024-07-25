@@ -4,6 +4,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { categoriesRouter } from './routes/categoriesRoute.js';
+import { incomeRouter } from './routes/incomeRoute.js';
 
 const app = express()
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
@@ -18,7 +19,7 @@ app.listen(5000, () => {
 })
 
 app.use('/api/expenses', expensesRouter)
-// app.use('/api/incomes', incomesRouter)
+app.use('/api/incomes', incomeRouter)
 app.use('/api/categories', categoriesRouter)
 
 app.use(express.static(__dirname + "/public"))

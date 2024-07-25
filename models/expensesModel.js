@@ -10,7 +10,7 @@ db.schema.hasTable( TABLENAME ).then( function ( exists ) {
             t.integer( 'amount' );
             t.string( 'category', 50 );
             t.text( 'comment' );
-            t.datetime( 'date' ).defaultTo(knex.fn.now(6));;
+            t.datetime( 'date' ).defaultTo(db.fn.now(6));;
         } );
     }
 } );
