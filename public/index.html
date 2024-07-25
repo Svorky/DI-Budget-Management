@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Manager</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <form>
+        <input name="action" id="action-0" required="required" value="expense" type="radio" checked="checked">
+        <label for="action-0">Expense</label>
+        <input name="action" id="action-1" required="required" value="income" type="radio">
+        <label for="action-1">Income</label>
+        <br>
+        <label for="amount" class="formbuilder-text-label">Amount<span class="formbuilder-required">*</span></label>
+        <input type="tel" name="amount" access="false" id="amount" required="required" aria-required="true">
+        <select name="category" id="category">
+        </select>
+        <label for="date" class="formbuilder-date-label">Date</label>
+        <input type="date" name="date" access="false" id="date">
+        <button type="submit" class="btn-default btn">Add</button>
+    </form>
 </body>
 </html>
