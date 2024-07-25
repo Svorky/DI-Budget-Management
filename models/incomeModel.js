@@ -1,7 +1,7 @@
 import { db } from '../config/db.js';
 
-TABLENAME = 'incomes';
-TABLEFIELDS = [ "id", "amount", "comment", "date" ];
+const TABLENAME = 'incomes';
+const TABLEFIELDS = [ "id", "amount", "comment", "date" ];
 
 db.schema.hasTable( TABLENAME ).then( function ( exists ) {
     if ( !exists ) {
@@ -9,7 +9,7 @@ db.schema.hasTable( TABLENAME ).then( function ( exists ) {
             t.increments( 'id' ).primary();
             t.integer( 'amount' );
             t.text( 'comment' );
-            t.datetime( 'date' ).defaultTo(knex.fn.now(6));;
+            t.datetime( 'date' ).defaultTo(db.fn.now(6));;
         } );
     }
 } );
