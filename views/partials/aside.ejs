@@ -2,13 +2,19 @@
     <div class="expensies">
         <h1>Total Expense</h1>
         <h2 class="red">
-            <%= locals.transactions.filter( tr => tr.category !== 'Income').reduce((acc,cur) => acc+cur.amount, 0)%>
+            <%= locals.records.filter( tr => tr.type !== 'income').reduce((acc,cur) => acc+cur.amount, 0)%>
         </h2>
+        <div class="by-category">
+            <% for(let cat of locals.categories){%>
+            <p><%= cat.name %></p>
+            <p><%= locals.records.filter( r => r.category === cat.name).reduce((acc,curr)=>acc + curr.amount,0) %></p>
+            <% } %>
+        </div>
     </div>
     <div class="incomes">
         <h1>Total Income</h1>
         <h2 class="green">
-            <%= locals.transactions.filter( tr => tr.category === 'Income').reduce((acc,cur) => acc+cur.amount, 0)%>
+            <%= locals.records.filter( tr => tr.type === 'income').reduce((acc,cur) => acc+cur.amount, 0)%>
         </h2>
     </div>
 </section>

@@ -30,19 +30,14 @@ datetime.value = new Date().toISOString().slice(0, -8);
 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     let formData = new FormData(event.target);
     let data = Object.fromEntries(formData);
 
-    let url;
-    if(data.action === "expense") {
-        url = '/api/expenses';
-    } else {
-        url = '/api/incomes';
-    }
-    console.log(data);
+    let url = '/api/records';
+
     let { action, ...creates } = data;
-    console.log(creates);
+    creates.type = action;
     fetch(url, {
         method: "post",
         headers: {
@@ -51,9 +46,25 @@ form.addEventListener('submit', (event) => {
         body: JSON.stringify(creates)
     })
         .then(
-            result => result.json()
+            result => {
+                result.json();
+            }
         )
         .then(
-            json => console.log(json)
+            json => {
+                console.log(json)
+                window.location.reload();
+            }
         );
 });
+
+function deleteRecord(id){
+    fetch(`/api/records/${id}`,{
+        method: 'DELETE',
+    })
+    .then( result => result.json())
+    .then( json => {
+        console.log(json)
+        window.location.reload();
+    })
+}

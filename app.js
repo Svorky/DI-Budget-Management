@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import { categoriesRouter } from './routes/categoriesRoute.js';
 import { incomeRouter } from './routes/incomeRoute.js';
 import { pagesRouter } from './routes/pagesRouter.js';
+import { recordsRouter } from './routes/recordsRoute.js';
 
 const app = express()
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
@@ -21,8 +22,9 @@ app.listen(5000, () => {
 })
 
 app.use('/',pagesRouter)
-app.use('/api/expenses', expensesRouter)
-app.use('/api/incomes', incomeRouter)
+// app.use('/api/expenses', expensesRouter)
+// app.use('/api/incomes', incomeRouter)
+app.use('/api/records', recordsRouter)
 app.use('/api/categories', categoriesRouter)
 
 app.use(express.static(__dirname + "/public"))
