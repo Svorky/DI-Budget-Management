@@ -12,22 +12,26 @@
 <body>
     <div class="container">
         <main class="main">
-            <form>
+            <form class="form-add">
                 <input name="action" id="action-ex" required="required" value="expense" type="radio" checked="checked">
                 <label for="action-0">Expense</label>
                 <input name="action" id="action-in" required="required" value="income" type="radio">
                 <label for="action-1">Income</label>
-                <br>
                 <label for="amount" class="formbuilder-text-label">Amount<span>*</span></label>
                 <input type="tel" name="amount" id="amount" required="required">
+                <label for="category" id="category-label">Category</label>
                 <select name="category" id="category">
+                    <% for(let c of locals.categories){ %>
+                        <option>
+                            <%= c.name %>
+                        </option>
+                        <% } %>
                 </select>
                 <label for="date">Date</label>
                 <input type="datetime-local" name="date" id="date">
-                <button type="submit" class="btn-default btn">Add</button>
-                <br>
                 <label for="comment">Comment</label>
                 <textarea name="comment" id="comment"></textarea>
+                <button type="submit" class="btn">Add</button>
             </form>
             <%- include('partials/table') %>
         </main>

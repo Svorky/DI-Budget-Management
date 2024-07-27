@@ -1,10 +1,16 @@
+* {
+    font-size: 1.2rem;
+}
+
 .container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 800px;
+    width: 50rem;
     margin: 0 auto;
+    padding-top: 40px;
 }
+
 .table {
     display: grid;
     grid-template-columns: repeat(7, auto);
@@ -29,4 +35,20 @@
 .by-category {
     display: grid;
     grid-template-columns: auto auto;
+    column-gap: 15px;
+}
+
+.form-add {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.by-category p {
+    margin: 0;
+}
+
+.btn {
+    cursor: pointer;
 }

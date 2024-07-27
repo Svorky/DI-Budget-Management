@@ -1,27 +1,15 @@
-fetch('/api/categories')
-    .then(
-        result => result.json()
-    )
-    .then(
-        json => {
-            let select = document.querySelector('#category');
-            for(let option of json) {
-                let opt = document.createElement('option');
-                opt.value = option.name;
-                opt.innerText = option.name;
-                select.appendChild(opt);
-            }
-        }
-    );
 let category = document.querySelector('#category');
+let categoryLabel = document.querySelector('#category-label');
 
 let exradiobtn = document.querySelector("#action-ex");
 exradiobtn.addEventListener('change', (event) => {
+    categoryLabel.style.display = 'inline-block';
     category.style.display = 'inline-block';
 });
 
 let inradiobtn = document.querySelector("#action-in");
 inradiobtn.addEventListener('change', (event) => {
+    categoryLabel.style.display = 'none';
     category.style.display = 'none';
 });
 
