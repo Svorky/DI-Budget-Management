@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+}
+.table {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    width: fit-content;
+    row-gap: 5px;
+    column-gap: 5px;
+}
+
+.ids {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.green {
+    color: green
+}
+
+.red {
+    color: red;
+}
