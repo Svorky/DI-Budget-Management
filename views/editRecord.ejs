@@ -19,7 +19,7 @@
                 <label for="category">Category</label>
                 <select name="category" id="category">
                     <% for(let c of locals.categories){ %>
-                        <option <%=c.name===data.category ? 'selected' : '' %>><%= c.name %></option>
+                        <option value="<%= c.id %>" <%=c.id===data.category ? 'selected' : '' %>><%= c.name %></option>
                         <% } %>
                 </select>
                 <% } %>

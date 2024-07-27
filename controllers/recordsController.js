@@ -20,8 +20,7 @@ export function getAllRecordsByType(req, res) {
 
 export function createRecord(req, res) {
     let { amount, category, comment, date, type } = req.body;
-    if(type === 'income') category = 'Income';
-    let insert = { amount, category, comment, date, type };
+    let insert = { amount, comment, date, type };
     models.insertRecord(insert)
         .then(result => res.json(result));
 }

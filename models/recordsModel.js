@@ -8,7 +8,7 @@ db.schema.hasTable(TABLENAME).then(function (exists) {
         return db.schema.createTable(TABLENAME, function (t) {
             t.increments('id').primary();
             t.integer('amount');
-            t.string('category', 50);
+            t.integer('category');
             t.text('comment');
             t.datetime('date').defaultTo(db.fn.now(6));;
             t.string('type', 50);

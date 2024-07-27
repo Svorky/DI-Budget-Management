@@ -22,7 +22,7 @@ let datetime = document.querySelector('#date');
 datetime.value = new Date().toISOString().slice(0, -8);
 
 let form = document.querySelector('form');
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
     event.preventDefault();
     let formData = new FormData(event.target);
     let data = Object.fromEntries(formData);
@@ -32,14 +32,15 @@ form.addEventListener('submit', (event) => {
     let { action, ...creates } = data;
     creates.type = action;
     if(creates?.newCategory && creates.newCategory.trim() !== '') {
-        fetch('/api/categories', {
+        let result = await fetch('/api/categories', {
             method: 'post',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ name: creates.newCategory })
-        });
-        creates.category = creates.newCategory;
+        })
+        let json = await result.json()
+        creates.category = json[0].id
     }
     fetch(url, {
         method: "post",
@@ -55,7 +56,6 @@ form.addEventListener('submit', (event) => {
         )
         .then(
             json => {
-                console.log(json);
                 window.location.reload();
             }
         );

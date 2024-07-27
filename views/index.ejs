@@ -22,7 +22,7 @@
                 <label for="category" id="category-label">Category</label>
                 <select name="category" id="category">
                     <% for(let c of locals.categories){ %>
-                        <option><%= c.name %></option>
+                        <option value="<%= c.id %>"><%= c.name %></option>
                         <% } %>
                     <option value="addnew">Add new category...</option>
                 </select>

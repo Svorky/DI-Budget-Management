@@ -7,7 +7,7 @@
         <div class="by-category">
             <% for(let cat of locals.categories){%>
             <p><%= cat.name %></p>
-            <p><%= locals.records.filter( r => r.category === cat.name).reduce((acc,curr)=>acc + curr.amount,0) %></p>
+            <p><%= locals.records.filter( r => r.category === cat.id).reduce((acc,curr)=>acc + curr.amount,0) %></p>
             <% } %>
         </div>
     </div>
