@@ -5,12 +5,17 @@ let exradiobtn = document.querySelector("#action-ex");
 exradiobtn.addEventListener('change', (event) => {
     categoryLabel.style.display = 'inline-block';
     category.style.display = 'inline-block';
+    category.selectedIndex = 0;
 });
 
 let inradiobtn = document.querySelector("#action-in");
 inradiobtn.addEventListener('change', (event) => {
     categoryLabel.style.display = 'none';
     category.style.display = 'none';
+    let newcatlbl = document.querySelector('#newcategorylbl');
+    if(newcatlbl) newcatlbl.remove();
+    let newcatinp = document.querySelector('#newcategoryinput');
+    if(newcatinp) newcatinp.remove();
 });
 
 let datetime = document.querySelector('#date');
@@ -26,6 +31,16 @@ form.addEventListener('submit', (event) => {
 
     let { action, ...creates } = data;
     creates.type = action;
+    if(creates?.newCategory && creates.newCategory.trim() !== '') {
+        fetch('/api/categories', {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name: creates.newCategory })
+        });
+        creates.category = creates.newCategory;
+    }
     fetch(url, {
         method: "post",
         headers: {
@@ -40,19 +55,34 @@ form.addEventListener('submit', (event) => {
         )
         .then(
             json => {
-                console.log(json)
+                console.log(json);
                 window.location.reload();
             }
         );
 });
 
-function deleteRecord(id){
-    fetch(`/api/records/${id}`,{
+function deleteRecord(id) {
+    fetch(`/api/records/${id}`, {
         method: 'DELETE',
     })
-    .then( result => result.json())
-    .then( json => {
-        console.log(json)
-        window.location.reload();
-    })
+        .then(result => result.json())
+        .then(json => {
+            window.location.reload();
+        });
 }
+
+category.addEventListener('change', (event) => {
+    let value = event.target.selectedOptions[0].value;
+    if(value === "addnew") {
+        let label = document.createElement('label');
+        label.innerText = 'New category';
+        label.setAttribute('id', 'newcategorylbl');
+        category.after(label);
+
+        let field = document.createElement('input');
+        field.setAttribute('type', 'text');
+        field.setAttribute('name', 'newCategory');
+        field.setAttribute('id', 'newcategoryinput');
+        label.after(field);
+    }
+});

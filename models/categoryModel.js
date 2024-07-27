@@ -15,6 +15,7 @@ db.schema.hasTable( TABLENAME ).then( function ( exists ) {
 export function getAllCategories () {
     return db( TABLENAME )
         .select( TABLEFIELDS )
+        .orderBy('name')
 }
 
 export function getCategoryById ( id ) {
