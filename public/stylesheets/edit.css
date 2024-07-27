@@ -2,6 +2,12 @@
     font-size: 1.5rem;
 }
 
+.edit-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .title {
     display: flex;
     justify-content: center;
