@@ -1,0 +1,23 @@
+* {
+    font-size: 1.5rem;
+}
+
+.categories-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.categories-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red
+}

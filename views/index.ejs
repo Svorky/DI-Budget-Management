@@ -22,9 +22,7 @@
                 <label for="category" id="category-label">Category</label>
                 <select name="category" id="category">
                     <% for(let c of locals.categories){ %>
-                        <option>
-                            <%= c.name %>
-                        </option>
+                        <option><%= c.name %></option>
                         <% } %>
                     <option value="addnew">Add new category...</option>
                 </select>
@@ -33,6 +31,7 @@
                 <label for="comment">Comment</label>
                 <textarea name="comment" id="comment"></textarea>
                 <button type="submit" class="btn">Add</button>
+                <a href="/categories"><button type="button" class="btn">Edit categories</button></a>
             </form>
             <%- include('partials/table') %>
         </main>
