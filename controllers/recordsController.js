@@ -5,10 +5,10 @@ export function getAllRecords(req, res) {
         .then(result => res.json(result));
 }
 
-export function getRecordById(req,res){
-    const id = req.params.id
+export function getRecordById(req, res) {
+    const id = req.params.id;
     models.getRecordById(id)
-    .then(result => res.json(result))
+        .then(result => res.json(result));
 }
 
 export function getAllRecordsByType(req, res) {
@@ -30,4 +30,18 @@ export function deleteRecord(req, res) {
     let id = req.params.id;
     models.deleteRecord(id)
         .then(result => res.json(result));
+}
+
+export function updateRecord(req) {
+    const id = Number(req.params.id);
+    const { amount, category, date, comment } = req.body;
+    const update = {
+        id,
+        amount,
+        category,
+        date,
+        comment
+    };
+    models.updateRecord(update)
+        .then(result => result);
 }

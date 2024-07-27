@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="../stylesheets/edit.css">
+</head>
+<body>
+    <h1 class="title">Edit <%= locals.data.type %></h1>
+    <form class="form-edit" method="post">
+        <label for="amount" class="formbuilder-text-label">Amount<span>*</span></label>
+        <input type="tel" name="amount" id="amount" required="required" value="<%= locals.data.amount %>">
+        <% if(locals.data.type !== 'income' ){ %>
+        <label for="category">Category</label>
+        <select name="category" id="category">
+            <% for(let c of locals.categories){ %>
+                <option <%= c.name === data.category ? 'selected' : '' %>><%= c.name %></option>
+                <% } %>
+        </select>
+        <% } %>
+        <label for="date">Date</label>
+        <input type="datetime-local" name="date" id="date" value="<%= locals.data.date.toISOString().slice(0, -8) %>">
+        <label for="comment">Comment</label>
+        <textarea name="comment" id="comment" value="<%= locals.data.comment %>"></textarea>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
