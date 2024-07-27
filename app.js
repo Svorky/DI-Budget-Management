@@ -1,10 +1,8 @@
 import express from 'express'
-import { expensesRouter } from './routes/expensesRoute.js'
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { categoriesRouter } from './routes/categoriesRoute.js';
-import { incomeRouter } from './routes/incomeRoute.js';
 import { pagesRouter } from './routes/pagesRouter.js';
 import { recordsRouter } from './routes/recordsRoute.js';
 
