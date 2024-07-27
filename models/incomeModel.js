@@ -1,13 +1,14 @@
 import { db } from '../config/db.js';
 
 const TABLENAME = 'incomes';
-const TABLEFIELDS = [ "id", "amount", "comment", "date" ];
+const TABLEFIELDS = [ "id", "amount", "category", "comment", "date" ];
 
 db.schema.hasTable( TABLENAME ).then( function ( exists ) {
     if ( !exists ) {
         return db.schema.createTable( TABLENAME, function ( t ) {
             t.increments( 'id' ).primary();
             t.integer( 'amount' );
+            t.string( 'category', 50 );
             t.text( 'comment' );
             t.datetime( 'date' ).defaultTo(db.fn.now(6));;
         } );

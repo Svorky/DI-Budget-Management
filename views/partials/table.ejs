@@ -1,0 +1,18 @@
+<section class="table">
+    <span class="ids">#</span>
+    <span>Amount</span>
+    <span>Category</span>
+    <span>Date</span>
+    <span>Comment</span>
+    <span></span>
+    <% let count = 1 %>
+    <% for(let tr of locals.transactions){ %>
+        <% let color = tr.category !== 'Income' ? 'red' : 'green' %>
+        <span class="<%= 'ids ' + color %>"><%= count %></span>
+        <span class=<%= `${color}` %>><%= tr.amount %></span>
+        <span class=<%= `${color}` %>><%= tr.category %></span>
+        <span class=<%= `${color}` %>><%= tr.date.toLocaleString() %></span>
+        <span class=<%= `${color}` %>><%= tr.comment %></span>
+        <div><button type="button" onclick="deleteRecord(tr.id)">Delete</button></div>
+        <% count++ } %>
+</section>

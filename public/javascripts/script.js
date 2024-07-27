@@ -30,7 +30,7 @@ datetime.value = new Date().toISOString().slice(0, -8);
 
 let form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     let formData = new FormData(event.target);
     let data = Object.fromEntries(formData);
 
