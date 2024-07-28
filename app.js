@@ -20,8 +20,6 @@ app.listen(5000, () => {
 })
 
 app.use('/',pagesRouter)
-// app.use('/api/expenses', expensesRouter)
-// app.use('/api/incomes', incomeRouter)
 app.use('/api/records', recordsRouter)
 app.use('/api/categories', categoriesRouter)
 
