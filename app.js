@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(cors())
 app.set( 'view engine', 'ejs' );
 
-app.listen(5000, () => {
+app.listen(3000, () => {
     console.log('server listening 5000')
 })
 
