@@ -42,6 +42,7 @@ export function getRecordsByCategory(category) {
 }
 
 export function insertRecord(args) {
+    console.log(args)
     return db(TABLENAME)
         .insert(args)
         .returning(TABLEFIELDS);
